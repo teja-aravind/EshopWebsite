@@ -1,0 +1,44 @@
+<h1>
+    Shopping Cart
+</h1>
+<div class="row col-10" *ngIf="cart$ | async as cart ">
+    <p>
+        You have {{ cart.totalCount }} in your Cart.
+    </p>
+    <table class="table" border="0">
+        <thead>
+            <tr>
+                <th style="width: 100px;"></th>
+                <th style="width: 200px;" class="text-left">Product</th>
+                <th style="width: 230px;">Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let p of products">
+            <tr *ngFor="let item of cart.items">
+                <td *ngIf="item.product.title === p.payload.toJSON().title">
+                    <div class="thumbnail" style.backgroundImage="url({{ p.payload.toJSON().imageUrl }})"></div>
+                </td>
+                <td class="cartquancen text-left" *ngIf="item.product.title === p.payload.toJSON().title">
+                    {{ p.payload.toJSON().title }}
+                </td>
+                <td class="cartquancen" *ngIf="item.product.title === p.payload.toJSON().title">
+                    <product-quantity [shopping-cart]="shopCart" [product]="p"></product-quantity>
+                </td>
+                <td class="cartquancen" *ngIf="item.product.title === p.payload.toJSON().title">
+                    {{ p.payload.toJSON().price * item.quantity | currency:'&#8377;' }}
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th><button routerLink="/" class="btn btn-success">Home</button></th>
+                <th><button 
+                    (click)="clearCart()"
+                    class="btn btn-danger">Clear Shopping Cart</button></th>
+                <th>{{ cart.totalCount }} in Cart</th>
+                <th>{{ cart.totalPrice | currency:'&#8377;' }}</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>

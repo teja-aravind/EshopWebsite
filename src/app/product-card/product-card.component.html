@@ -1,0 +1,10 @@
+<div class="card">
+    <img style="height: 10rem;" src="{{ product.payload.node_.children_.root_.left.value.value_ }}" class="card-img-top">
+    <div class="card-body">
+    <h5 class="card-title">{{ product.payload.node_.children_.root_.right.value.value_ }}</h5>
+    <p class="card-text">{{ product.payload.node_.children_.root_.value.value_ | currency:'&#8377;' }}</p>
+    </div>
+    <div class="card-footer">
+        <product-quantity [product]="product" [shopping-cart]="shoppingCart" ></product-quantity>
+    </div>
+</div>

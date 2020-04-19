@@ -1,0 +1,20 @@
+th {
+    text-align: center;
+    vertical-align: inherit;
+}
+
+td {
+    text-align: center;
+    border: none;
+}
+
+.thumbnail {
+    height: 80px;
+    border-radius: 100%;
+    width: 80px;
+    background-size: cover;
+}
+
+.cartquancen {
+    vertical-align: inherit;
+}

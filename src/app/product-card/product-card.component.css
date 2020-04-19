@@ -1,0 +1,19 @@
+.card {
+    margin-bottom: 30px;
+    border: none;
+    width: 15rem;
+}
+
+.card-footer {
+    background: none;
+    border: none;
+    text-align: center;
+}
+
+.card-footer button {
+    cursor: pointer;
+}
+
+.card-body {
+    text-align: center;
+}

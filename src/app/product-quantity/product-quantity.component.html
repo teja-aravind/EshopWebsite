@@ -1,0 +1,17 @@
+<button 
+        *ngIf="getProductQuan() === 0; else updatedQuantity"
+        (click)="addToCart()" 
+        class="btn btn-info btn-block">Add to Cart</button>
+        <ng-template #updatedQuantity >
+            <div class="row no-gutters">
+                <div class="col-2">
+                    <button (click)="removeFromCart()" class="btn btn-info btn-block">-</button>
+                </div>
+                <div class="col">
+                    {{ getProductQuan() }} in Cart
+                </div>
+                <div class="col-2">
+                    <button (click)="addToCart()" class="btn btn-info btn-block">+</button>
+                </div>
+            </div>
+        </ng-template>

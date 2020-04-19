@@ -1,0 +1,11 @@
+<div class="catFixed list-group">
+    <a class="list-group-item list-group-item-warning" routerLink="/">All Categories</a>
+    <a 
+    routerLink="/"
+    [queryParams]="{ category : c.key }"
+    *ngFor=" let c of categories$" 
+    [class.active]="category === c.key"
+    class="list-group-item list-group-item-action">
+        {{c.payload.node_.children_.root_.value.value_}}
+    </a>
+</div>
