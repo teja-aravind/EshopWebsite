@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { OrderService } from 'src/app/order.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-admin-orders',
@@ -6,10 +8,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-orders.component.css']
 })
 export class AdminOrdersComponent implements OnInit {
+  
+  isCollapsed = true;
 
-  constructor() { }
+  orders = [];
 
-  ngOnInit(): void {
+  constructor(
+    orderService : OrderService,
+    private modalService: NgbModal
+  ) { 
+    orderService.getOrders().snapshotChanges().subscribe(
+      sub => {
+        sub.forEach(i => {
+          this.orders.push(i.payload.toJSON());
+        });
+      }
+    )
+  }
+
+  ngOnInit() {
+  }
+
+  openScrollableContent(longContent) {
+    this.modalService.open(longContent, { scrollable: true });
   }
 
 }

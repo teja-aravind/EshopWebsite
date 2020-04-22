@@ -1,1 +1,32 @@
-<p>admin-orders works!</p>
+      <table class="table table-hover table-light text-center">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Date Placed</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders">
+            <td>{{ order.shipping.name }}</td>
+            <td>{{ order.datePlaced | date : 'longDate' }}</td>
+            <td>
+              <ng-template #longContent let-modal>
+                <div class="modal-header">
+                  <h4 class="modal-title">Order Details</h4>
+                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <order [order]="order.items"></order>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+                </div>
+              </ng-template>
+              <button class="btn btn-outline-primary mb-2 mr-2" (click)="openScrollableContent(longContent)">View Order</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>

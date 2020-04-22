@@ -31,7 +31,6 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
     this.subscription = this.productService.getAll().snapshotChanges().pipe(
       map(changes =>{
         this.filteredProducts = this.products = changes;
-        //console.log(this.products$);
       })
     ).subscribe();
   }
