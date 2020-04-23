@@ -1,0 +1,15 @@
+@media (min-width: 768px){
+    .container, .container-sm, .container-md {
+        padding-left: 100px;
+    }
+}
+
+@media (min-width: 400px) and (max-width : 700px){
+    .responsive {
+        transform: translate(-100px, 310px);
+    }
+}
+
+.padd {
+    padding-top: 100px;
+}

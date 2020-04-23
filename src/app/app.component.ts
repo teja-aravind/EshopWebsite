@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 import { UserService } from './user.service';
@@ -8,7 +8,10 @@ import { UserService } from './user.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  collapse = true;
+  dropdown = true;
   
   constructor(private userService : UserService, private auth : AuthService, router : Router) {
     auth.user$.subscribe(user => {
@@ -22,6 +25,27 @@ export class AppComponent {
       localStorage.removeItem('returnUrl');
       router.navigateByUrl(returnUrl);
     });
+  }
+  ngOnInit() {
+    setInterval(() => {
+      let temp : string = document.getElementById("navbarsExampleDefault").className;
+      let temps;
+      if(document.getElementById("navBarDropDown")){
+        temps = document.getElementById("navBarDropDown").className;
+      }
+
+      if(temps !== "nav-item dropdown show"){
+        this.dropdown = false;
+      }else{
+        this.dropdown = true;
+      }      
+      
+      if(temp !== "navbar-collapse collapse"){
+        this.collapse = true;
+      }else{
+        this.collapse = false;
+      }
+    }, 100);
   }
 
 }

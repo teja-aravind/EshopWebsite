@@ -3,9 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { AppUser } from '../models/app-user';
 import { ShoppingCartService } from '../shopping-cart.service';
-import { async } from '@angular/core/testing';
-import { Observable } from 'rxjs';
-import { ShoppingCart } from '../models/shopping-cart';
 
 @Component({
   selector: 'bs-navbar',
@@ -13,6 +10,8 @@ import { ShoppingCart } from '../models/shopping-cart';
   styleUrls: ['./bs-navbar.component.css']
 })
 export class BsNavbarComponent implements OnInit {
+
+ collapse = false;
 
   cart$;
 
@@ -27,6 +26,10 @@ export class BsNavbarComponent implements OnInit {
 
   async ngOnInit() {
     this.cart$ = await this.cartService.getShoppingCart();
+  }
+
+  navBar() {
+    this.collapse = !this.collapse;
   }
 
   logout() {

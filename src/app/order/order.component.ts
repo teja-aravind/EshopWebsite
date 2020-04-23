@@ -15,7 +15,6 @@ export class OrderComponent implements OnInit {
 
   ngOnInit() {
     let Total = 0;
-    console.log(this.order)
     for(let id in this.order){
       this.products.push(this.order[id]);
       Total += this.order[id].totalPrice;

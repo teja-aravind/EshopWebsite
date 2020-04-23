@@ -1,3 +1,27 @@
-.catFixed {
-    position: fixed;
+
+
+@media only screen and (max-width: 400px) {
+    .catFixed {
+        position: relative;
+        width: max-content;
+        padding-bottom: 10px;
+        text-align: center;
+        margin-left: 40px;
+    }
+}
+
+@media (min-width: 400px) and (max-width : 700px){
+    .catFixed {
+        position: relative;
+        width: max-content;
+        padding-bottom: 10px;
+        text-align: center;
+        margin-left: 40px;
+    }
+}
+
+@media only screen and (min-width: 700px) {
+    .catFixed {
+        position: fixed;
+    }
 }
