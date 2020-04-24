@@ -29,12 +29,12 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     setInterval(() => {
       let temp : string = document.getElementById("navbarsExampleDefault").className;
-      let temps;
+      let temps : string;
       if(document.getElementById("navBarDropDown")){
         temps = document.getElementById("navBarDropDown").className;
       }
 
-      if(temps !== "nav-item dropdown show"){
+      if(temps && !temps.includes("show")){
         this.dropdown = false;
       }else{
         this.dropdown = true;

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ShoppingCartService } from '../shopping-cart.service';
 
 @Component({
@@ -6,14 +6,23 @@ import { ShoppingCartService } from '../shopping-cart.service';
   templateUrl: './product-quantity.component.html',
   styleUrls: ['./product-quantity.component.css']
 })
-export class ProductQuantityComponent {
+export class ProductQuantityComponent implements OnInit {
 
   @Input('product') product;
   @Input('shopping-cart') shoppingCart;
 
+  nogut = true;
+
   constructor(
     private cartService : ShoppingCartService
   ) { }
+
+  ngOnInit() {
+    console.log(window.innerWidth)
+    if(window.innerWidth < 426){
+      this.nogut = false;
+    }
+  }
 
   addToCart() {
     this.cartService.addToShoppingCart(this.product);
