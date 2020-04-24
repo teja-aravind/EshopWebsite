@@ -18,7 +18,6 @@ export class ProductQuantityComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(window.innerWidth)
     if(window.innerWidth < 426){
       this.nogut = false;
     }

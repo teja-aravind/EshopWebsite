@@ -11,7 +11,7 @@ import { UserService } from './user.service';
 export class AppComponent implements OnInit {
 
   collapse = true;
-  dropdown = true;
+  dropdown = false;
   
   constructor(private userService : UserService, private auth : AuthService, router : Router) {
     auth.user$.subscribe(user => {
@@ -34,11 +34,11 @@ export class AppComponent implements OnInit {
         temps = document.getElementById("navBarDropDown").className;
       }
 
-      if(temps && !temps.includes("show")){
-        this.dropdown = false;
-      }else{
+      if(window.innerWidth < 426 && temps && temps.includes("show")){
         this.dropdown = true;
-      }      
+      }else{
+        this.dropdown = false;
+      }
       
       if(temp !== "navbar-collapse collapse"){
         this.collapse = true;
